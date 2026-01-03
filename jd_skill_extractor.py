@@ -1,41 +1,14 @@
-# jd_skill_extractor.py
+from skill_mapper import SkillMapper, extract_phrases
 
-import re
-from skill_normalizer import normalize_text
+mapper = SkillMapper()
 
-# Very small, GENERIC technical vocabulary anchors
-TECH_KEYWORDS = [
-    "java", "python", "javascript", "typescript",
-    "sql", "nosql",
-    "docker", "kubernetes",
-    "aws", "azure", "gcp",
-    "spring", "spring boot",
-    "react", "angular", "vue",
-    "node", "node.js",
-    "rest", "rest api", "graphql",
-    "microservices",
-    "machine learning", "deep learning",
-    "tensorflow", "pytorch",
-    "ci", "cd", "jenkins",
-    "linux"
-]
+def extract_skills_from_jd(jd_text: str):
+    phrases = extract_phrases(jd_text)
 
-def extract_jd_skills(jd_text: str):
-    """
-    Industry-style JD requirement extraction.
-    Generic, role-agnostic, recruiter-clean.
-    """
-    jd_text = normalize_text(jd_text)
+    skills = set()
+    for phrase in phrases:
+        skill_id, score = mapper.map_phrase(phrase)
+        if skill_id:
+            skills.add(skill_id)
 
-    found_skills = set()
-
-    for keyword in TECH_KEYWORDS:
-        # word-boundary match to avoid garbage phrases
-        pattern = r"\b" + re.escape(keyword) + r"\b"
-        if re.search(pattern, jd_text):
-            found_skills.add(keyword)
-
-    return sorted(found_skills)
-
-
-    
+    return sorted(skills)

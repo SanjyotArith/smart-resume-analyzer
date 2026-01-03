@@ -1,23 +1,20 @@
-# resume_skill_extractor.py
+from skill_mapper import SkillMapper, extract_phrases
 
-from skill_normalizer import normalize_text
+mapper = SkillMapper()
 
 def extract_resume_skills(resume_text: str, jd_skills: list):
-    """
-    Checks which JD-defined skills are present in the resume.
-    """
-    resume_text = normalize_text(resume_text)
+    phrases = extract_phrases(resume_text)
 
-    matched_skills = []
-    missing_skills = []
+    resume_skills = set()
+    for phrase in phrases:
+        skill_id, score = mapper.map_phrase(phrase)
+        if skill_id:
+            resume_skills.add(skill_id)
 
-    for skill in jd_skills:
-        if skill in resume_text:
-            matched_skills.append(skill)
-        else:
-            missing_skills.append(skill)
+    matched = sorted(set(jd_skills) & resume_skills)
+    missing = sorted(set(jd_skills) - resume_skills)
 
     return {
-        "matched": sorted(set(matched_skills)),
-        "missing": sorted(set(missing_skills))
+        "matched": matched,
+        "missing": missing
     }

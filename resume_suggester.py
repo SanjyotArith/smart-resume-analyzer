@@ -1,47 +1,42 @@
 # resume_suggester.py
 
-def generate_resume_suggestions(
-    missing_skills: list,
-    experience_score: float,
-    text_similarity_score: float,
-    required_experience: int,
-    candidate_experience: float
-):
-    """
-    Generates actionable resume improvement suggestions.
-    Deterministic, explainable, recruiter-safe.
-    """
-
+def generate_resume_suggestions(results: dict):
     suggestions = []
 
-    # 1. Missing skills suggestions
-    if missing_skills:
+    missing = results.get("missing_skills", [])
+    skill_match = results.get("skill_match_percent", 0)
+    text_similarity = results.get("text_similarity_percent", 0)
+    required_exp = results.get("required_experience_years", 0)
+    candidate_exp = results.get("candidate_experience_years", 0)
+
+    # 1. Missing skills
+    if missing:
         suggestions.append(
-            "Consider adding or highlighting experience with the following skills: "
-            + ", ".join(missing_skills) + "."
+            f"Consider adding or highlighting experience with the following skills: {', '.join(missing)}."
         )
 
-    # 2. Experience-related suggestions
-    if required_experience > 0 and candidate_experience < required_experience:
+    # 2. Low skill match
+    if skill_match < 50:
         suggestions.append(
-            f"The job requires at least {required_experience} years of experience. "
-            "Consider clearly highlighting internships, projects, or relevant work "
-            "that demonstrate hands-on experience."
+            "Your skill alignment with the job description is low. Update your skills section to better reflect the required technologies."
         )
 
-    # 3. Resume–JD alignment suggestions
-    if text_similarity_score < 0.6:
+    # 3. Low text similarity
+    if text_similarity < 40:
         suggestions.append(
-            "Your resume wording differs from the job description. "
-            "Consider aligning terminology and responsibilities more closely "
-            "with the job requirements."
+            "Your resume wording differs significantly from the job description. Try using similar terminology and role-specific keywords."
         )
 
-    # 4. Positive reinforcement (important)
+    # 4. Experience gap
+    if required_exp > 0 and candidate_exp < required_exp:
+        suggestions.append(
+            f"The role requires at least {required_exp} years of experience. Highlight internships, projects, or hands-on work to demonstrate relevant exposure."
+        )
+
+    # 5. Strong profile
     if not suggestions:
         suggestions.append(
-            "Your resume aligns well with the job description. "
-            "Ensure key achievements and responsibilities are clearly described."
+            "Your resume aligns well with the job description. Consider minor refinements for clarity and stronger impact."
         )
 
     return suggestions

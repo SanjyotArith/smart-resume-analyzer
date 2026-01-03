@@ -1,0 +1,101 @@
+skill_id,skill_name,aliases
+python,Python,py
+java,Java,java se
+javascript,JavaScript,js
+typescript,TypeScript,
+c_cpp,C / C++,c c++
+csharp,C#,dotnet c#
+go,Go,golang
+rust,Rust,
+php,PHP,
+ruby,Ruby,
+
+sql,SQL,structured query language
+mysql,MySQL,
+postgresql,PostgreSQL,postgres
+oracle_db,Oracle Database,oracle
+mongodb,MongoDB,
+redis,Redis,
+sqlite,SQLite,
+nosql,NoSQL,
+
+html,HTML,html5
+css,CSS,css3
+react,React,reactjs
+angular,Angular,angularjs
+vue,Vue.js,vue
+nodejs,Node.js,node
+express,Express.js,express
+spring,Spring Framework,
+spring_boot,Spring Boot,
+django,Django,
+flask,Flask,
+fastapi,FastAPI,
+
+rest,REST,rest api
+graphql,GraphQL,
+microservices,Microservices,
+api_design,API Design,
+
+excel,Excel,ms excel
+power_bi,Power BI,powerbi
+tableau,Tableau,
+data_analysis,Data Analysis,data analytics
+data_visualization,Data Visualization,
+statistics,Statistics,statistical analysis
+data_modeling,Data Modeling,
+etl,ETL,
+data_warehousing,Data Warehousing,
+
+machine_learning,Machine Learning,ml
+deep_learning,Deep Learning,dl
+nlp,Natural Language Processing,nlp
+computer_vision,Computer Vision,cv
+tensorflow,TensorFlow,
+pytorch,PyTorch,
+scikit_learn,Scikit-learn,sklearn
+pandas,Pandas,
+numpy,NumPy,
+matplotlib,Matplotlib,
+seaborn,Seaborn,
+
+aws,AWS,amazon web services
+azure,Azure,microsoft azure
+gcp,Google Cloud Platform,gcp
+docker,Docker,
+kubernetes,Kubernetes,k8s
+jenkins,Jenkins,
+ci_cd,CI/CD,continuous integration
+terraform,Terrainform,
+ansible,Ansible,
+
+linux,Linux,
+unix,Unix,
+bash,Bash,shell scripting
+git,Git,
+github,GitHub,
+gitlab,GitLab,
+
+selenium,Selenium,
+cypress,Cypress,
+playwright,Playwright,
+junit,JUnit,
+pytest,PyTest,
+manual_testing,Manual Testing,
+automation_testing,Automation Testing,
+performance_testing,Performance Testing,
+
+android,Android,
+ios,iOS,
+react_native,React Native,
+flutter,Flutter,
+
+cyber_security,Cyber Security,information security
+networking,Networking,
+oauth,OAuth,
+jwt,JWT,
+
+agile,Agile,
+scrum,Scrum,
+jira,JIRA,
+confluence,Confluence
